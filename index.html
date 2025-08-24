@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beat Detection & Rhythm Visualizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Title -->
+  <h1 class="title">🎵 Beat Detection & Rhythm <span>Visualizer</span></h1>
+
+  <!-- Main Card -->
+  <div class="main-card">
+    
+    <!-- File Input -->
+    <div class="file-upload">
+      <label for="audioFile" class="btn upload-btn">📂 Choose WAV/MP3 File</label>
+      <input type="file" id="audioFile" accept="audio/wav,audio/mp3">
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button class="btn play">▶ Play</button>
+      <button class="btn pause">⏸ Pause</button>
+      <button class="btn stop">⏹ Stop</button>
+    </div>
+
+    <!-- Equalizer Canvas -->
+    <canvas id="visualizer" width="800" height="300"></canvas>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-card beat">
+        <div class="beat-circle" id="beatCircle"></div>
+        <p>Beat Detected</p>
+      </div>
+      <div class="stat-card">
+        <h2 id="bpm">0</h2>
+        <p>BPM (Average)</p>
+      </div>
+      <div class="stat-card">
+        <h2 id="energy">0.0%</h2>
+        <p>Current Energy</p>
+      </div>
+      <div class="stat-card">
+        <h2 id="beats">0</h2>
+        <p>Beats Detected</p>
+      </div>
+    </div>
+
+    <!-- Algorithm Explanation -->
+    <div class="algorithm">
+      <h3>Beat Detection Algorithm</h3>
+      <p>This implementation uses an energy-based beat detection algorithm combined with a frequency equalizer visualization:</p>
+      <ol>
+        <li><strong>Energy Calculation:</strong> Instantaneous energy is computed using FFT magnitudes.</li>
+        <li><strong>Moving Average:</strong> Rolling average of past energies forms a baseline.</li>
+        <li><strong>Peak Detection:</strong> Beats are flagged when energy exceeds baseline × sensitivity.</li>
+        <li><strong>Equalizer:</strong> Frequency bins are drawn as bars in real-time for a visual effect.</li>
+      </ol>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
